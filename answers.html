@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Flexbox & Grid Layout</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        /* Navigation Bar - Flexbox */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Hamburger menu - hidden by default */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Main Content Layout - CSS Grid */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Grid items */
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .card p {
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        /* Hero Section - Flexbox */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer - Flexbox */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Media Queries for Responsiveness */
+        
+        /* Tablet Layout */
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Desktop Layout */
+        @media (min-width: 992px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero {
+                padding: 6rem 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        /* Mobile Layout Adjustments */
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #2c3e50;
+                padding: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">FlexGrid</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="hamburger">☰</div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Responsive Web Design</h1>
+        <p>Combining the power of Flexbox and CSS Grid to create beautiful, responsive layouts that work on any device.</p>
+        <a href="#" class="btn">Learn More</a>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <article class="card">
+            <h2>Flexbox Layout</h2>
+            <p>Flexbox is a one-dimensional layout method for arranging items in rows or columns. Items flex to fill additional space or shrink to fit into smaller spaces.</p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+        
+        <article class="card">
+            <h2>CSS Grid</h2>
+            <p>CSS Grid Layout is a two-dimensional system, meaning it can handle both columns and rows, unlike flexbox which is largely a one-dimensional system.</p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+        
+        <article class="card">
+            <h2>Media Queries</h2>
+            <p>Media queries allow you to apply CSS styles depending on a device's general type or specific characteristics like screen resolution or browser viewport width.</p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+        
+        <article class="card">
+            <h2>Responsive Design</h2>
+            <p>Responsive web design makes your web page look good on all devices. It uses flexible layouts, flexible images and media queries.</p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+        
+        <article class="card">
+            <h2>Mobile First</h2>
+            <p>Mobile-first design is a design strategy that starts with designing for smaller screens first, then progressively enhancing the experience for larger screens.</p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+        
+        <article class="card">
+            <h2>Performance</h2>
+            <p>Performance is a critical aspect of responsive design. Optimizing images, minifying code, and reducing HTTP requests can significantly improve load times.</p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 FlexGrid Layouts. All rights reserved.</p>
+            <p>Built with Flexbox and CSS Grid</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Toggle mobile menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
